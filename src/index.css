@@ -4,7 +4,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
 
-
+::root{
+  veryLightGray: hsl(0, 0%, 98%);
+}
 a {
   font-weight: 500;
   color: #646cff;
@@ -21,6 +23,7 @@ body {
   min-width: 320px;
   min-height:105vh;
   font-size: 18px;
+  background-color: var(--veryLightGray);
 }
 
 h1 {
