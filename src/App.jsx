@@ -53,7 +53,7 @@ function App() {
   }
 
   return (
-    <body className='bg-gray-100 text-lightTheme-darkGrayishBlue dark:bg-darkTheme-veryDarkBlue dark:text-darkTheme-lightGrayishBlue  transition-colors duration-300'>  
+    <body className='bg-gray-100 text-lightTheme-darkGrayishBlue dark:bg-darkTheme-veryDarkBlue dark:text-darkTheme-lightGrayishBlue  transition-colors duration-300 ease-in-out'>  
     <header>
     <img src={mode ? desktopdark : desktoplight} className='w-full relative bottom-24 mt-24 xs:hidden md:inline md:bottom-48 lg:bottom-24 md:mt-48 lg:mt-24 '  alt="background"/>
     
@@ -80,14 +80,15 @@ function App() {
   {
     todos.map( (tarea,indice)=>{
     return(
-      <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue  border-b border-lightGrayishBlue dark:border-gray-600 bg-lightTheme-veryLightGray  flex items-center h-16   w-1/3 mx-auto p-3 rounded-t md:w-1/2 lg:w-1/3 xs:w-11/12'>
+      <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue  border-b border-lightGrayishBlue dark:border-gray-600 bg-lightTheme-veryLightGray  flex items-center h-16   w-1/3 mx-auto p-3 rounded-t md:w-1/2 lg:w-1/3 xs:w-11/12 '>
       <div className='ml-2 border rounded-full h-5 w-5 dark:border-gray-700 bg-check-gradient cursor-pointer' onClick={handleCheck} ><img src={check ? iconcheck : ''  } className='mx-auto relative top-1.5 w-1/2 ' alt="check"/></div>  
       <div className="w-full list-none flex  flex-row  justify-between items-center">
      <div>
-    <li key={indice} className=' text-darkTheme-darkGrayishBlue  dark:text-lightTheme-darkGrayishBlue ml-2  lg:text-lg xs:text-xs  font-semibold lg:ml-4  relative top-1 cursor-pointer'>
+    <li key={indice} className='text-darkTheme-darkGrayishBlue  dark:text-lightTheme-darkGrayishBlue ml-2  lg:text-lg xs:text-xs  font-semibold lg:ml-4  relative top-1 cursor-pointer  '>
     {tarea} </li>
     </div>
-    <div><img src={iconcross} className='cursor-pointer lg:hidden md:hidden  w-1/2 relative w-3 h-3 mr-2' /></div>
+    <div>
+      <img src={iconcross} className='cursor-pointer w-1/2 relative w-3 h-3 mr-2 ' /></div>
     </div>
     </div>
     );
