@@ -19,15 +19,15 @@ function App() {
 
   useEffect(() => {
     if(Mode){
-     
+      document.documentElement.classList.add('dark')
     } else {
-      
+      document.documentElement.classList.add('light')
     }
   }, [Mode])
   
 
   return (
-    <body className='bg-lightTheme-veryLightGrayishBlue'>  
+    <body className='bg-gray-100 light:text-lightTheme-darkGrayishBlue dark:bg-darkTheme-veryDarkBlue dark:text-darkTheme-lightGrayishBlue  transition-colors duration-300'>  
     <header>
     <img src={desktoplight} className='w-full relative bottom-24 mt-24 xs:hidden md:inline md:bottom-48 lg:bottom-24 md:mt-48 lg:mt-24 '/>
     
@@ -38,43 +38,43 @@ function App() {
     </h1>
     </div>
     <div>
-    <img src={iconmoon}  className='inline xs:pr-6 lg:p-0 md:p-0 '/>
+    <img src={iconmoon}  className='inline xs:pr-6 lg:p-0 md:p-0 ' onClick={handleClick}/>
     
 
     </div>
     </div>
-    <div className='lg:bottom-72 md:bottom-64 bg-lightTheme-veryLightGray border w-1/3 mx-auto lg:mb-6 p-3 rounded md:w-1/2 lg:w-1/3 xs:w-11/12   z-10 relative bottom-52 mb-8'>
+    <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue border-none lg:bottom-72 md:bottom-64 bg-lightTheme-veryLightGray  w-1/3 mx-auto lg:mb-6 p-3 rounded md:w-1/2 lg:w-1/3 xs:w-11/12 z-10 relative bottom-52 mb-8'>
     <input type="radio" id="opt1" name="opt1" value="opt1"  className='ml-2' />
-    <input placeholder=' Create a new todo...' className='lg:text-lg xs:text-xs bg-white ml-2 font-semibold'/> 
+    <input type='text' placeholder=' Create a new todo...' className='dark:bg-darkTheme-veryDarkDesaturatedBlue lg:text-lg xs:text-xs bg-white ml-2 font-semibold'/> 
     </div>
     </header>
 
-    <main className='z-10 relative bottom-56 lg:bottom-72 md:bottom-72'>
-    <div className='bg-lightTheme-veryLightGray border-t border-l flex items-center h-16 border-r  w-1/3 mx-auto p-3 rounded-t md:w-1/2 lg:w-1/3 xs:w-11/12'>
+    <main className='dark:bg-darkTheme-veryDarkBlue border-none z-10 relative bottom-56 lg:bottom-72 md:bottom-72'>
+    <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue  border-b border-lightGrayishBlue dark:border-gray-600 bg-lightTheme-veryLightGray  flex items-center h-16   w-1/3 mx-auto p-3 rounded-t md:w-1/2 lg:w-1/3 xs:w-11/12'>
     <input type="radio" id="opt2" name="opt2" value="opt2" className='ml-2'/>
-    <label for="option2"  className='ml-2  lg:text-lg xs:text-xs text-gray-600 font-semibold'>Complete online JavaScript course</label>
+    <label for="option2"  className='ml-2  lg:text-lg xs:text-xs text-gray-500 font-semibold'>Complete online JavaScript course</label>
     </div>
-    <div className='bg-lightTheme-veryLightGray border-l border-t border-r flex items-center h-16 w-1/3 mx-auto p-3 md:w-1/2 lg:w-1/3 xs:w-11/12'>
+    <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue border-b   border-lightGrayishBlue dark:border-gray-600 bg-lightTheme-veryLightGray   flex items-center h-16 w-1/3 mx-auto p-3 md:w-1/2 lg:w-1/3 xs:w-11/12'>
     <input type="radio" id="opt3" name="opt3" value="opt3"  className='ml-2 '/>
-    <label for="option3" className='ml-2 lg:text-lg xs:text-xs text-gray-600 font-semibold'>Jag around the park 3x</label>
+    <label for="option3" className='ml-2 lg:text-lg xs:text-xs text-gray-500 font-semibold'>Jag around the park 3x</label>
     </div>
-    <div className='bg-lightTheme-veryLightGray border-l border-r border-t flex items-center h-16 w-1/3 mx-auto p-3 md:w-1/2 lg:w-1/3 xs:w-11/12'>
+    <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue border-b   border-lightGrayishBlue  dark:border-gray-600 bg-lightTheme-veryLightGray  flex items-center h-16 w-1/3 mx-auto p-3 md:w-1/2 lg:w-1/3 xs:w-11/12'>
     <input type="radio" id="opt4" name="opt4" value="opt4" className='ml-2 '/>
-    <label for="option4" className='ml-2 lg:text-lg xs:text-xs text-gray-600 font-semibold' >10 minutes meditation</label>
+    <label for="option4" className='ml-2 lg:text-lg xs:text-xs text-gray-500 font-semibold' >10 minutes meditation</label>
     </div>
-    <div className='bg-lightTheme-veryLightGray border-l border-r border-t flex items-center h-16 w-1/3 mx-auto p-3 md:w-1/2 lg:w-1/3 xs:w-11/12'>
+    <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue border-b   border-lightGrayishBlue dark:border-gray-600 bg-lightTheme-veryLightGray  flex items-center h-16 w-1/3 mx-auto p-3 md:w-1/2 lg:w-1/3 xs:w-11/12'>
     <input type="radio" id="opt5" name="opt5" value="opt5" className='ml-2 '/>
-    <label for="option5" className='ml-2 lg:text-lg xs:text-xs text-gray-600 font-semibold'>Read for 1 hour </label>
+    <label for="option5" className='ml-2 lg:text-lg xs:text-xs text-gray-500 font-semibold'>Read for 1 hour </label>
     </div>
-    <div className='bg-lightTheme-veryLightGray border-l border-r border-t flex items-center h-16  w-1/3 mx-auto p-3 md:w-1/2 lg:w-1/3 xs:w-11/12'>
+    <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue border-b   border-lightGrayishBlue dark:border-gray-600 bg-lightTheme-veryLightGray flex items-center h-16  w-1/3 mx-auto p-3 md:w-1/2 lg:w-1/3 xs:w-11/12'>
     <input type="radio" id="opt6" name="opt6" value="opt6" className='ml-2 '/>
-    <label for="option6" className='ml-2 lg:text-lg xs:text-xs text-gray-600 font-semibold'>Pick up groceries</label>
+    <label for="option6" className='ml-2 lg:text-lg xs:text-xs text-gray-500 font-semibold'>Pick up groceries</label>
     </div>
-    <div className='bg-lightTheme-veryLightGray border-l border-r border-t flex items-center  h-16  w-1/3 mx-auto p-3 md:w-1/2 lg:w-1/3 xs:w-11/12'>
+    <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue border-b   border-lightGrayishBlue dark:border-gray-600 bg-lightTheme-veryLightGray  flex items-center  h-16  w-1/3 mx-auto p-3 md:w-1/2 lg:w-1/3 xs:w-11/12'>
     <input type="radio" id="opt7" name="opt7" value="opt7" className='ml-2 '/>
-    <label for="option7" className='ml-2 lg:text-lg xs:text-xs text-gray-600 font-semibold' >Complete Todo App on Frontend Mentor</label>
+    <label for="option7" className='ml-2 lg:text-lg xs:text-xs text-gray-500 font-semibold' >Complete Todo App on Frontend Mentor</label>
     </div>
-    <div className='bg-lightTheme-veryLightGray flex justify-between items-center h-10 flex-row  xs:text-xs lg:text-base border h-16  w-1/3 mx-auto p-3 rounded-b md:w-1/2 lg:w-1/3 xs:w-11/12 '>
+    <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue border-none   border-lightGrayishBlue bg-lightTheme-veryLightGray flex justify-between items-center h-10 flex-row  xs:text-xs lg:text-base h-16  w-1/3 mx-auto p-3 rounded-b md:w-1/2 lg:w-1/3 xs:w-11/12 '>
         <div className='ml-1 text-gray-400 font-medium'>{/* Add dynamic number */} items left</div>
             <span className='xs:hidden md:inline lg:inline text-gray-500 '> All</span>
             <span className='xs:hidden md:inline lg:inline text-gray-500 '>Active </span>
@@ -82,7 +82,7 @@ function App() {
         <div className='ml-1 text-gray-400 font-medium'>Clear Completed</div>
                
       </div>
-    <div className='bg-lightTheme-veryLightGray border mt-4  w-1/3 mx-auto text-center p-3 rounded md:w-1/2 lg:w-1/3 xs:w-11/12 lg:hidden md:hidden'>
+    <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue bg-lightTheme-veryLightGray border  w-1/3 mx-auto text-center p-3 rounded md:w-1/2 lg:w-1/3 relative xs:top-6 border-none xs:w-11/12 lg:hidden md:hidden'>
     
     <label  className=' font-semibold text-gray-500' >
              
@@ -94,13 +94,13 @@ function App() {
     
 
     
-    <p className="text-center relative top-14 mb-4 text-base text-gray-400 font-semibold">
+    <p className="dark:bg-darkTheme-veryDarkBlue text-center relative top-14 mb-4 text-base text-gray-400 font-semibold">
              Drag and drop to reorder list
     </p>
     </main>
       
- <footer>
-<div class="attribution">
+ <footer className="dark:bg-darkTheme-veryDarkBlue">
+<div class="attribution dark:bg-darkTheme-veryDarkBlue">
   Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="nofollow noopener noreferrer">Frontend Mentor</a>. 
   Coded by <a href="https://github.com/hectrhcc" target='_blank' rel="nofollow noopener noreferrer" >Hectrhcc</a>.
 </div>
