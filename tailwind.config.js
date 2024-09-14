@@ -43,7 +43,11 @@ export default {
         lightGrayishBlueHover: 'hsl(236, 33%, 92%)',
         darkGrayishBlue: 'hsl(234, 11%, 52%)',
         veryDarkGrayishBlue: 'hsl(233, 14%, 35%)',
+        VeryDarkGrayishBlue2: 'hsl(237, 14%, 26%)',
         },
+        },
+        backgroundImage: {
+          'check-gradient': 'linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%))',
         },
     },
   },

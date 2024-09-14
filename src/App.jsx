@@ -25,6 +25,11 @@ function App() {
     }
   }, [Mode])
   
+  const [texto, setTexto] = useState('')
+
+  function cambioTexto(e) {
+    setTexto(e.target.value)
+  }
 
   return (
     <body className='bg-gray-100 text-lightTheme-darkGrayishBlue dark:bg-darkTheme-veryDarkBlue dark:text-darkTheme-lightGrayishBlue  transition-colors duration-300'>  
@@ -44,36 +49,18 @@ function App() {
     </div>
     </div>
     <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue border-none lg:bottom-72 md:bottom-64 bg-lightTheme-veryLightGray  w-1/3 mx-auto lg:mb-6 p-3 rounded md:w-1/2 lg:w-1/3 xs:w-11/12 z-10 relative bottom-52 mb-8'>
-    <input type="radio" id="opt1" name="opt1" value="opt1"  className='ml-2' />
-    <input type='text' placeholder=' Create a new todo...' className='dark:bg-darkTheme-veryDarkDesaturatedBlue lg:text-lg xs:text-xs bg-white ml-2 font-semibold lg:ml-6'/> 
+    <div className='ml-2 border rounded-full h-5 w-5 dark:border-gray-700' ></div>
+    <input type='text' placeholder=' Create a new todo...' value={texto} onChange={cambioTexto} className='dark:bg-darkTheme-veryDarkDesaturatedBlue lg:text-lg xs:text-xs bg-white ml-2 font-semibold lg:ml-8 relative bottom-5 '/> 
+    
     </div>
     </header>
 
     <main className='dark:bg-darkTheme-veryDarkBlue border-none z-10 relative bottom-56 lg:bottom-72 md:bottom-72'>
     <div className=' bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue  border-b border-lightGrayishBlue dark:border-gray-600 bg-lightTheme-veryLightGray  flex items-center h-16   w-1/3 mx-auto p-3 rounded-t md:w-1/2 lg:w-1/3 xs:w-11/12'>
-    <input type="radio" id="opt2" name="opt2" value="opt2" className='ml-2'/>
-    <label for="option2"  className='text-darkTheme-darkGrayishBlue  dark:text-lightTheme-darkGrayishBlue ml-2  lg:text-lg xs:text-xs  font-semibold lg:ml-6'>Complete online JavaScript course</label>
+    <div className='ml-2 border rounded-full h-5 w-5 dark:border-gray-700 bg-check-gradient' ><img src={iconcheck} className='mx-auto relative top-1.5 w-1/2 '/></div>
+    <label for="option2"  className='text-darkTheme-darkGrayishBlue  dark:text-lightTheme-darkGrayishBlue ml-2  lg:text-lg xs:text-xs  font-semibold lg:ml-4  relative top-1'>Complete online JavaScript course</label>
     </div>
-    <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue border-b   border-lightGrayishBlue dark:border-gray-600 bg-lightTheme-veryLightGray   flex items-center h-16 w-1/3 mx-auto p-3 md:w-1/2 lg:w-1/3 xs:w-11/12'>
-    <input type="radio" id="opt3" name="opt3" value="opt3"  className='ml-2 '/>
-    <label for="option3" className='text-darkTheme-darkGrayishBlue  dark:text-lightTheme-darkGrayishBlue ml-2 lg:text-lg xs:text-xs text-gray-500 font-semibold lg:ml-6'>Jag around the park 3x</label>
-    </div>
-    <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue border-b   border-lightGrayishBlue  dark:border-gray-600 bg-lightTheme-veryLightGray  flex items-center h-16 w-1/3 mx-auto p-3 md:w-1/2 lg:w-1/3 xs:w-11/12'>
-    <input type="radio" id="opt4" name="opt4" value="opt4" className='ml-2 '/>
-    <label for="option4" className='text-darkTheme-darkGrayishBlue  dark:text-lightTheme-darkGrayishBlue ml-2 lg:text-lg xs:text-xs text-gray-500 font-semibold lg:ml-6' >10 minutes meditation</label>
-    </div>
-    <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue border-b   border-lightGrayishBlue dark:border-gray-600 bg-lightTheme-veryLightGray  flex items-center h-16 w-1/3 mx-auto p-3 md:w-1/2 lg:w-1/3 xs:w-11/12'>
-    <input type="radio" id="opt5" name="opt5" value="opt5" className='ml-2 '/>
-    <label for="option5" className='text-darkTheme-darkGrayishBlue  dark:text-lightTheme-darkGrayishBlue ml-2 lg:text-lg xs:text-xs text-gray-500 font-semibold lg:ml-6'>Read for 1 hour </label>
-    </div>
-    <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue border-b   border-lightGrayishBlue dark:border-gray-600 bg-lightTheme-veryLightGray flex items-center h-16  w-1/3 mx-auto p-3 md:w-1/2 lg:w-1/3 xs:w-11/12'>
-    <input type="radio" id="opt6" name="opt6" value="opt6" className='ml-2 '/>
-    <label for="option6" className='text-darkTheme-darkGrayishBlue  dark:text-lightTheme-darkGrayishBlue ml-2 lg:text-lg xs:text-xs text-gray-500 font-semibold lg:ml-6'>Pick up groceries</label>
-    </div>
-    <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue border-b   border-lightGrayishBlue dark:border-gray-600 bg-lightTheme-veryLightGray  flex items-center  h-16  w-1/3 mx-auto p-3 md:w-1/2 lg:w-1/3 xs:w-11/12'>
-    <input type="radio" id="opt7" name="opt7" value="opt7" className='ml-2 '/>
-    <label for="option7" className='text-darkTheme-darkGrayishBlue  dark:text-lightTheme-darkGrayishBlue ml-2 lg:text-lg xs:text-xs text-gray-500 font-semibold lg:ml-6' >Complete Todo App on Frontend Mentor</label>
-    </div>
+    
     <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue border-none   border-lightGrayishBlue bg-lightTheme-veryLightGray flex justify-between items-center h-10 flex-row  xs:text-xs lg:text-base h-16  w-1/3 mx-auto p-3 rounded-b md:w-1/2 lg:w-1/3 xs:w-11/12 '>
         <div className='ml-1 text-gray-400 font-medium'>{/* Add dynamic number */} items left</div>
             <span className='xs:hidden md:inline lg:inline text-gray-500 '> All</span>
@@ -110,3 +97,4 @@ function App() {
 }
 
 export default App
+
