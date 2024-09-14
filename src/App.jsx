@@ -94,7 +94,7 @@ function App() {
     
 
     
-    <p className="dark:bg-darkTheme-veryDarkBlue text-center relative top-14 mb-4 text-base text-gray-400 font-semibold">
+    <p className="dark:bg-darkTheme-veryDarkBlue dark:text-gray-600  text-gray-400 text-center relative top-14 mb-4 text-base font-semibold">
              Drag and drop to reorder list
     </p>
     </main>
