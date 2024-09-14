@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from "react"
 import iconcheck from './assets/icon-check.svg'
 import iconcross from './assets/icon-cross.svg'
 import iconmoon from './assets/icon-moon.svg'
@@ -11,20 +11,36 @@ import './App.css'
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [Mode, setMode] = useState(false)
+
+  const handleClick = () => {
+    setMode(!Mode)
+  }
+
+  useEffect(() => {
+    if(Mode){
+     
+    } else {
+      
+    }
+  }, [Mode])
+  
 
   return (
     <body className='bg-lightTheme-veryLightGrayishBlue'>  
     <header>
     <img src={desktoplight} className='w-full relative bottom-24 mt-24 xs:hidden md:inline md:bottom-48 lg:bottom-24 md:mt-48 lg:mt-24 '/>
+    
     <img src={mobilelight} className='w-full h-full mt-20 relative bottom-20  xs:inline md:hidden md:hidden lg:hidden md:bottom-48 '/>
     <div className=' lg:w-1/3 md:w-1/2 md:mx-auto  lg:mx-auto flex flex-row xs:justify-between h-10 relative bottom-84  lg:bottom-80 md:bottom-80 xs:bottom-60 '>
-    <div><h1 className="  lg:m-0 text-white lg:text-4xl text-3xl font-bold  w-full xs:ml-4 tracking-widest">
+    <div><h1 className=" p-0 lg:m-0 md:m-0 text-white lg:text-4xl text-3xl font-bold  w-full xs:ml-4 tracking-widest">
     T O D O   
     </h1>
     </div>
     <div>
-    <img src={iconmoon}  className='inline xs:pr-6 lg:p-0 '/>
+    <img src={iconmoon}  className='inline xs:pr-6 lg:p-0 md:p-0 '/>
+    
+
     </div>
     </div>
     <div className='lg:bottom-72 md:bottom-64 bg-lightTheme-veryLightGray border w-1/3 mx-auto lg:mb-6 p-3 rounded md:w-1/2 lg:w-1/3 xs:w-11/12   z-10 relative bottom-52 mb-8'>
