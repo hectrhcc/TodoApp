@@ -104,7 +104,7 @@ function App() {
     </div>
     <div className='bg-white h-12 dark:bg-darkTheme-veryDarkDesaturatedBlue border-none lg:bottom-72 md:bottom-64 bg-lightTheme-veryLightGray  w-1/3 mx-auto lg:mb-6 p-3 rounded md:w-1/2 lg:w-1/3 xs:w-11/12 z-10 relative bottom-52 mb-8'>
     <div className='ml-2 mr-22 border rounded-full h-5 w-5 dark:border-gray-700' ></div>
-    <input type='text' placeholder=' Create a new todo...' value={texto} onChange={cambioTexto} onKeyPress={handleKeyPress} className='dark:bg-darkTheme-veryDarkDesaturatedBlue lg:text-base xs:text-xs bg-white ml-2 font-semibold lg:ml-8 relative bottom-5  text-black'/> 
+    <input type='text' placeholder=' Create a new todo...' value={texto} onChange={cambioTexto} onKeyPress={handleKeyPress} className='focus:border-none dark:bg-darkTheme-veryDarkDesaturatedBlue lg:text-base xs:text-xs bg-white ml-2 font-semibold lg:ml-8 relative bottom-5  text-black'/> 
     
     </div>
     </header>
