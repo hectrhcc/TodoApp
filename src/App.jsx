@@ -13,7 +13,7 @@ import './App.css'
 function App() {
   const [todos, setTodos] = useState([]);
   const [mode, setMode] = useState(false);
-  const [check, setCheck] = useState(false);
+  const [filter, setFilter] = useState('all');
   const [texto, setTexto] = useState('');
   
   const handleClick = () => {
@@ -39,18 +39,51 @@ function App() {
     }
   }
 
-  function  handleEnter(){
+  function handleEnter(){
     if (texto.trim() !== '') {
-      setTodos([...todos, texto]);
+      setTodos([...todos, { text: texto, completed: false }]);
       setTexto('');
     }
   }
+ 
+  const handleCheck = (indice) =>{
+    const newTodos = [...todos];
+   
+    newTodos[indice].completed = !newTodos[indice].completed;
   
-  const handleCheck = (i) =>{
-    setCheck(!check)
-    //tachar la tarea 
-    document.documentElement.style('underline');
+  setTodos(newTodos);
   }
+
+  const  handleDelete = (indice) =>{ 
+    const newTodos = todos.filter((_, i) => i !== indice);
+    setTodos(newTodos);
+  };
+
+  const handleAll = () =>{
+    //elementos tickeados y no tickeados
+    setFilter('all');
+  }
+  const handleActive = () =>{
+    //elementos no tickeados
+    setFilter('active');
+  };
+
+  const handleCompleted = () =>{
+    //elementos tickeados
+    setFilter('completed');
+  }
+
+  const handleClear = () =>{
+    //eliminar elementos tickeados
+    const newTodos = [...todos].filter(todo => !todo.completed);
+    setTodos(newTodos);
+  }
+    
+  const filteredTodos = todos.filter(todo => {
+    if (filter === 'all') return true;
+    if (filter === 'active') return !todo.completed;
+    if (filter === 'completed') return todo.completed;
+  });
 
   return (
     <body className='bg-gray-100 text-lightTheme-darkGrayishBlue dark:bg-darkTheme-veryDarkBlue dark:text-darkTheme-lightGrayishBlue  transition-colors duration-300 ease-in-out'>  
@@ -69,7 +102,7 @@ function App() {
 
     </div>
     <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue border-none lg:bottom-72 md:bottom-64 bg-lightTheme-veryLightGray  w-1/3 mx-auto lg:mb-6 p-3 rounded md:w-1/2 lg:w-1/3 xs:w-11/12 z-10 relative bottom-52 mb-8'>
-    <div className='ml-2 border rounded-full h-5 w-5 dark:border-gray-700' ></div>
+    <div className='ml-2 mr-22 border rounded-full h-5 w-5 dark:border-gray-700' ></div>
     <input type='text' placeholder=' Create a new todo...' value={texto} onChange={cambioTexto} onKeyPress={handleKeyPress} className='dark:bg-darkTheme-veryDarkDesaturatedBlue lg:text-lg xs:text-xs bg-white ml-2 font-semibold lg:ml-8 relative bottom-5 '/> 
     
     </div>
@@ -78,38 +111,43 @@ function App() {
     <main className='dark:bg-darkTheme-veryDarkBlue border-none z-10 relative bottom-56 lg:bottom-72 md:bottom-72'>
   
   {
-    todos.map( (tarea,indice)=>{
+    filteredTodos.map( (tarea,indice)=>{
     return(
       <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue  border-b border-lightGrayishBlue dark:border-gray-600 bg-lightTheme-veryLightGray  flex items-center h-16   w-1/3 mx-auto p-3 rounded-t md:w-1/2 lg:w-1/3 xs:w-11/12 '>
-      <div className='ml-2 border rounded-full h-5 w-5 dark:border-gray-700 bg-check-gradient cursor-pointer' onClick={handleCheck} ><img src={check ? iconcheck : ''  } className='mx-auto relative top-1.5 w-1/2 ' alt="check"/></div>  
+      <div className={`ml-2 border rounded-full h-5 w-5 dark:border-gray-700 ${tarea.completed ? 'bg-check-gradient cursor-pointer' : '' }`} onClick={()=>handleCheck(indice)} >  
+        {tarea.completed && <img src={iconcheck} className='mx-auto relative top-1.5 w-1/2 ' alt="check"/>}
+      </div>  
       <div className="w-full list-none flex  flex-row  justify-between items-center">
-     <div>
-    <li key={indice} className='text-darkTheme-darkGrayishBlue  dark:text-lightTheme-darkGrayishBlue ml-2  lg:text-lg xs:text-xs  font-semibold lg:ml-4  relative top-1 cursor-pointer  '>
-    {tarea} </li>
-    </div>
-    <div>
-      <img src={iconcross} className='cursor-pointer w-1/2 relative w-3 h-3 mr-2 ' /></div>
-    </div>
-    </div>
+          <div>
+            <li key={indice} className={`text-darkTheme-darkGrayishBlue  dark:text-lightTheme-darkGrayishBlue ml-2  lg:text-lg xs:text-xs  font-semibold lg:ml-4  relative top-1 cursor-pointer ml-4 flex-grow ${tarea.completed ? 'line-through text-gray-400' : ''}`} >
+            {tarea.text} </li>
+          </div>
+          
+      <div onClick={() => handleDelete(indice)} className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+        <img src={iconcross} className='cursor-pointer w-1/2 relative w-3 h-3 mr-2 ' alt='delete'/>
+      </div>
+
+       </div>
+      </div>
     );
 })
 }
   
     <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue border-none   border-lightGrayishBlue bg-lightTheme-veryLightGray flex justify-between items-center h-10 flex-row  xs:text-xs lg:text-base h-16  w-1/3 mx-auto p-3 rounded-b md:w-1/2 lg:w-1/3 xs:w-11/12 '>
-        <div className='ml-1 text-gray-400 font-medium'>{todos.length} items left</div>
-            <span className='xs:hidden md:inline lg:inline text-gray-500 cursor-pointer'  onClick='handleAll'> All</span>
-            <span className='xs:hidden md:inline lg:inline text-gray-500 cursor-pointer'  onClick='handleActive'>Active </span>
-            <span className='xs:hidden md:inline lg:inline text-gray-500 cursor-pointer' onClick='handleCompleted'>Completed</span>
-        <div className='ml-1 text-gray-400 font-medium mr-2 cursor-pointer' onClick='handleClear'>Clear Completed</div>
+        <div className='ml-1 text-gray-400 font-medium'>{todos.filter(todo => !todo.completed).length} items left</div>
+            <span className={filter === 'all' ? 'text-blue-500 xs:hidden md:inline lg:inline text-gray-500 cursor-pointer' : 'xs:hidden md:inline lg:inline text-gray-500 cursor-pointer' }  onClick={handleAll }> All</span>
+            <span className={filter === 'active' ? 'text-blue-500 xs:hidden md:inline lg:inline text-gray-500 cursor-pointer' : 'xs:hidden md:inline lg:inline text-gray-500 cursor-pointer'} onClick={handleActive }>Active </span>
+            <span className={filter === 'completed' ? 'text-blue-500 xs:hidden md:inline lg:inline text-gray-500 cursor-pointer' : 'xs:hidden md:inline lg:inline text-gray-500 cursor-pointer'}  onClick={handleCompleted }>Completed</span>
+        <div className='ml-1 text-gray-400 font-medium mr-2 cursor-pointer' onClick={handleClear}>Clear Completed</div>
                
       </div>
     <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue bg-lightTheme-veryLightGray border  w-1/3 mx-auto text-center p-3 rounded md:w-1/2 lg:w-1/3 relative xs:top-6 border-none xs:w-11/12 lg:hidden md:hidden'>
     
     <label  className=' font-semibold text-lightTheme-darkGrayishBlue' >
              
-    <span className='m-4 text-base cursor-pointer' onClick='handleAll'>All</span>
-    <span className='m-4 text-base cursor-pointer' onClick='handleActive'>Active</span>
-    <span className='m-4 text-base cursor-pointer' onClick='handleCompleted'>Completed</span>
+    <span className={filter === 'all' ? 'text-blue-500 m-4 text-base cursor-pointer' : 'm-4 text-base cursor-pointer' }  onClick={handleAll}>All</span>
+    <span className={filter === 'active' ? 'text-blue-500 m-4 text-base cursor-pointer' : 'm-4 text-base cursor-pointer' } onClick={handleActive}>Active</span>
+    <span className={filter === 'completed' ? 'text-blue-500 m-4 text-base cursor-pointer' : 'm-4 text-base cursor-pointer' } onClick={handleCompleted}>Completed</span>
     </label>
       </div>
     
