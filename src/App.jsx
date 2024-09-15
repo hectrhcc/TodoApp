@@ -7,7 +7,6 @@ import desktopdark from '../images/bg-desktop-dark.jpg'
 import desktoplight from '../images/bg-desktop-light.jpg'
 import mobiledark from '../images/bg-mobile-dark.jpg'
 import mobilelight from '../images/bg-mobile-light.jpg'
-import styled from "styled-components";
 import './App.css'
 
 
