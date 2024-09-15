@@ -1,3 +1,8 @@
+input:focus {
+    outline: none;
+    padding-left:0.5rem;
+  }
+
 .x{
     cursor: pointer;
     position: absolute;
