@@ -7,6 +7,7 @@ import desktopdark from '../images/bg-desktop-dark.jpg'
 import desktoplight from '../images/bg-desktop-light.jpg'
 import mobiledark from '../images/bg-mobile-dark.jpg'
 import mobilelight from '../images/bg-mobile-light.jpg'
+import styled from "styled-components";
 import './App.css'
 
 
@@ -101,9 +102,9 @@ function App() {
     </div>
 
     </div>
-    <div className='bg-white dark:bg-darkTheme-veryDarkDesaturatedBlue border-none lg:bottom-72 md:bottom-64 bg-lightTheme-veryLightGray  w-1/3 mx-auto lg:mb-6 p-3 rounded md:w-1/2 lg:w-1/3 xs:w-11/12 z-10 relative bottom-52 mb-8'>
+    <div className='bg-white h-12 dark:bg-darkTheme-veryDarkDesaturatedBlue border-none lg:bottom-72 md:bottom-64 bg-lightTheme-veryLightGray  w-1/3 mx-auto lg:mb-6 p-3 rounded md:w-1/2 lg:w-1/3 xs:w-11/12 z-10 relative bottom-52 mb-8'>
     <div className='ml-2 mr-22 border rounded-full h-5 w-5 dark:border-gray-700' ></div>
-    <input type='text' placeholder=' Create a new todo...' value={texto} onChange={cambioTexto} onKeyPress={handleKeyPress} className='dark:bg-darkTheme-veryDarkDesaturatedBlue lg:text-lg xs:text-xs bg-white ml-2 font-semibold lg:ml-8 relative bottom-5 '/> 
+    <input type='text' placeholder=' Create a new todo...' value={texto} onChange={cambioTexto} onKeyPress={handleKeyPress} className='dark:bg-darkTheme-veryDarkDesaturatedBlue lg:text-base xs:text-xs bg-white ml-2 font-semibold lg:ml-8 relative bottom-5  text-black'/> 
     
     </div>
     </header>
@@ -117,13 +118,13 @@ function App() {
       <div className={`ml-2 border rounded-full h-5 w-5 dark:border-gray-700 ${tarea.completed ? 'bg-check-gradient cursor-pointer' : '' }`} onClick={()=>handleCheck(indice)} >  
         {tarea.completed && <img src={iconcheck} className='mx-auto relative top-1.5 w-1/2 ' alt="check"/>}
       </div>  
-      <div className="w-full list-none flex  flex-row  justify-between items-center">
+      <div className="container w-full list-none flex  flex-row  justify-between items-center">
           <div>
             <li key={indice} className={`text-darkTheme-darkGrayishBlue  dark:text-lightTheme-darkGrayishBlue ml-2  lg:text-lg xs:text-xs  font-semibold lg:ml-4  relative top-1 cursor-pointer ml-4 flex-grow ${tarea.completed ? 'line-through text-gray-400' : ''}`} >
             {tarea.text} </li>
           </div>
           
-      <div onClick={() => handleDelete(indice)} className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+      <div onClick={() => handleDelete(indice)} className="x">
         <img src={iconcross} className='cursor-pointer w-1/2 relative w-3 h-3 mr-2 ' alt='delete'/>
       </div>
 

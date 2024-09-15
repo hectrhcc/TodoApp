@@ -1,0 +1,19 @@
+.x{
+    cursor: pointer;
+    position: absolute;
+    position: relative;
+    right:0rem;
+    display: none;
+}
+
+
+.container:hover .x{
+      display: block
+    }
+
+@media (max-width: 640px) {
+    .x{
+            display: inline;
+    }
+
+}
